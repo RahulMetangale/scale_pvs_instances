@@ -1,0 +1,8 @@
+{
+    "name": "scale-up-and-down-powervs",
+    "version": "1.0.0",
+    "author": "Rahul Metangale",
+    "dependencies": {
+        "express": "^4.19.2"
+    }
+}
