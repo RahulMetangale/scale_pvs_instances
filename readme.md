@@ -28,6 +28,8 @@ You should give minimum access to service IDs as possible. I have given followin
 Create API Key for this service ID. This API key will be used as IBM_CLOUD_API_KEY.
 
 ## Create Code Engine Instance
+From IBM Cloud Portal Create a 
+
 To create code engine instance run following commands:
 `export IBM_CLOUD_API_KEY="API key generated in above step"`
 

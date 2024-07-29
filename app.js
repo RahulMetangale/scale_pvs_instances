@@ -29,7 +29,7 @@ app.listen(PORT,function(err){
     }
 })
 
-app.get('/createConfigMaps', function (req, res) {
+app.post('/createConfigMaps', function (req, res) {
     res.send('Capturing Current PowerVS Instances State');
     console.log("Capturing the current PowerVS instance state")
     exec('./Create_Current_PVS_State_ConfigMap.sh', (error, stdout, stderr) => {
@@ -49,7 +49,7 @@ app.get('/createConfigMaps', function (req, res) {
         });
   })
 
-app.get('/runScaleUPTest', function (req, res) {
+app.post('/runScaleUPTest', function (req, res) {
     res.send('Running Scale up Test');
     exec('./Scale_PowerVS_Instances.sh "pvs-scale-up-config" "pvs_scale_up_config" true', (error, stdout, stderr) => {
         if (error) {
@@ -61,7 +61,7 @@ app.get('/runScaleUPTest', function (req, res) {
     });
 })
 
-app.get('/runScaleUP', function (req, res) {
+app.post('/runScaleUP', function (req, res) {
     res.send('Scaling up');
     exec('./Scale_PowerVS_Instances.sh "pvs-scale-up-config" "pvs_scale_up_config" false', (error, stdout, stderr) => {
         if (error) {
@@ -73,7 +73,7 @@ app.get('/runScaleUP', function (req, res) {
     });
 })
 
-app.get('/runScaleDownTest', function (req, res) {
+app.post('/runScaleDownTest', function (req, res) {
     res.send('Running Scale Down Test');
     exec('./Scale_PowerVS_Instances.sh "pvs-scale-down-config" "pvs_scale_down_config" true', (error, stdout, stderr) => {
         if (error) {
@@ -85,7 +85,7 @@ app.get('/runScaleDownTest', function (req, res) {
     });
 })
 
-app.get('/runScaleDown', function (req, res) {
+app.post('/runScaleDown', function (req, res) {
     res.send('Scaling Down');
     exec('./Scale_PowerVS_Instances.sh "pvs-scale-down-config" "pvs_scale_down_config" false', (error, stdout, stderr) => {
         if (error) {
