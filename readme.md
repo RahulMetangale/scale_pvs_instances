@@ -1,13 +1,13 @@
 # Scaling Power Virtual Server Instances
 
 ## Introduction
-This project includes scripts for scaling Power Virtual Server instances up and down. It captures the current state of all Power Virtual Server instances within the workspace and stores this information in a ConfigMap, labeled as the "pvs-scale-up-config" Simultaneously, it calculates scale-down values (1/8th) for CPU and RAM, storing these in a separate ConfigMap, labeled as the "pvs-scale-down-config"
+This project includes scripts for scaling Power Virtual Server instances up and down. It captures the current state of all Power Virtual Server instances within the workspace and stores this information in a ConfigMap, labeled as the "pvs-scale-up-config" Simultaneously, it calculates scale-down values (1/8th) for CPU and RAM, and store them in a separate ConfigMap, labeled as the "pvs-scale-down-config"
 
 ConfigMap is a Kubernetes concept used to store configuration data. During scaling operations, these ConfigMaps are read to perform the necessary scale-up and scale-down actions. It is possible to edit these ConfigMaps via the IBM Cloud portal, which facilitates easier control of scaling operations. 
 
 Scaling operations can be scheduled using a scheduler, and in this project, we utilize IBM Cloud Code Engine for this purpose.
 
-Why IBM Cloud Code Engine:  
+**Why IBM Cloud Code Engine:**    
 While any scheduler could be used to schedule the bash script, I chose IBM Cloud Code Engine for the following reasons:
 1. It is available on IBM Cloud.
 2. It supports ConfigMap, which I use to store scale-up and scale-down configurations. Since these configurations can be edited directly from the IBM Cloud portal, it simplifies the management of scaling values.
@@ -45,8 +45,8 @@ Select Applications and click on Create. Give any user friendly name for applica
 https://github.com/RahulMetangale/scale_pvs_instances.git
 ![](./images/Create_App_1.png)
 
-Click on specify build details. Keep defaults and click next ![](./images/Specify_Build_Details.png)
-Keep defaults on next screen and click next ![](./images/Specify_Build_Details_2.png)
+Click on specify build details. Keep defaults and click next ![](./images/Specify_Build_Details.png)  
+Keep defaults on next screen and click next ![](./images/Specify_Build_Details_2.png)  
 On next screen select following options:  
 **Registry Server:** Keep default or select from drop down  
 **Registry secret :** Code Engine Managed Secret  
@@ -80,8 +80,8 @@ Finally click on Create from right pane. This will perform following actions:
 ### Create Schedule
 In code engine project click on "Event Subscriptions". We will be adding following schedules:
 1. capture-configmap: This should be run only once. And be deleted after run. This scheduler will call path "/createConfigMaps" api endpoint. Which will create scale up and down configmaps
-2. scale-up: This should be schedule as per your requirements. This scheduler will call path "./runScaleUP" endpoint. This will scale up all the lpars in configured workspace (CRN/workspace defined in environment variables of application). 
-3. scale-down: This should be schedule as per your requirements. This scheduler will call path "./runScaleDown" endpoint. This will scale down all the lpars in configured workspace (CRN/workspace defined in environment variables of application). 
+2. scale-up: This should be scheduled as per your requirements. This scheduler will call path "./runScaleUP" endpoint. This will scale up all the lpars in configured workspace (CRN/workspace defined in environment variables of application). 
+3. scale-down: This should be scheduled as per your requirements. This scheduler will call path "./runScaleDown" endpoint. This will scale down all the lpars in configured workspace (CRN/workspace defined in environment variables of application). 
 
 Follow steps given below to create schedule. In "Event Subscriptions" click on Create, select "Periodic timer". Give any user friendly name or use the names given above ex: capture-configmap, scale-up, scale-down
 
