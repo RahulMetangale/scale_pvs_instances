@@ -68,6 +68,10 @@ Add following environment variables:
    Click on add environment variable, select option "Literal value". For environment variable name enter "CRN" and for value enter the CRN of PowerVS workspace.
 3. CODE_ENGINE_PROJECT_NAME:
    Click on add environment variable, select option "Literal value". For environment variable name enter "CODE_ENGINE_PROJECT_NAME" and for value enter the current code engine project name.
+4. CODE_ENGINE_RESOURCE_GROUP_NAME:
+   Click on add environment variable, select option "Literal value". For environment variable name enter "CODE_ENGINE_RESOURCE_GROUP_NAME" and for value enter the current code engine project resource group name.
+5. CODE_ENGINE_REGION:
+   Click on add environment variable, select option "Literal value". For environment variable name enter "CODE_ENGINE_REGION" and for value enter the current code engine project region name. ex: us-south
 
 For image start options change the port number to 3000 and keep everything else default.
 ![](./images/Create_App_4.png)
