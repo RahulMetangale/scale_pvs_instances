@@ -10,7 +10,9 @@ RUN apt-get update && \
     apt-get install -y wget && \
     apt-get install -y jq && \
     apt-get install -y bc && \
-    apt-get clean
+    apt-get autoremove -y && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists* /tmp/* /var/tmp/*
 
 # Install IBM Cloud CLI
 RUN curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
